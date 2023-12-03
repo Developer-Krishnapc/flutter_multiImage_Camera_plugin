@@ -9,7 +9,7 @@ This Flutter projects creates a custom plugin to take multiple images from the c
 </td>
 <td> => </td>
 <td>
-<img src="image-1.png" widhth=200 height=400>
+<img src="./assets/image-1.png" widhth=200 height=400>
 </td>
 </tr>
 <tr>
