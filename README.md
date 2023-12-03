@@ -5,7 +5,7 @@ This Flutter projects creates a custom plugin to take multiple images from the c
 ### Preview Images 
 <table>
 <tr><td>
-<img src="image.png" widhth=200 height=400> 
+<img src="[image.png](https://github.com/Developer-Krishnapc/flutter_multiImage_Camera_plugin/blob/master/assets/image.png)" widhth=200 height=400> 
 </td>
 <td> => </td>
 <td>
