@@ -9,32 +9,30 @@ This Flutter projects creates a custom plugin to take multiple images from the c
 </td>
 <td> => </td>
 <td>
-<img src="https://github.com/Developer-Krishnapc/flutter_multiImage_Camera_plugin/assets/133375124/6cd2a2b6-7db0-42ac-bf6d-e58749b4a54a" widhth=200 height=400>
+<img src="https://github.com/Developer-Krishnapc/flutter_multiImage_Camera_plugin/assets/133375124/c62c61ce-a0f4-43cf-9adc-6d91cccc88d6" widhth=200 height=400>
 </td>
 </tr>
 <tr>
 <td>
-<img src="https://github.com/Developer-Krishnapc/flutter_multiImage_Camera_plugin/assets/133375124/6cd2a2b6-7db0-42ac-bf6d-e58749b4a54a" widhth=200 height=400>
+ 
+<img src="https://github.com/Developer-Krishnapc/flutter_multiImage_Camera_plugin/assets/133375124/91640055-cb64-4f79-8a85-ba9d2f325ac1" widhth=200 height=400>
 </td>
 <td> => </td>
 <td>
-<img src="https://github.com/Developer-Krishnapc/flutter_multiImage_Camera_plugin/assets/133375124/6cd2a2b6-7db0-42ac-bf6d-e58749b4a54a" widhth=200 height=400>
+<img src="https://github.com/Developer-Krishnapc/flutter_multiImage_Camera_plugin/assets/133375124/38cf52c6-222b-40bf-882b-0e4d4ed27c18" widhth=200 height=400>
 </td>
 <tr>
 <td>
-<img src="https://github.com/Developer-Krishnapc/flutter_multiImage_Camera_plugin/assets/133375124/6cd2a2b6-7db0-42ac-bf6d-e58749b4a54a" widhth=200 height=400>
+<img src="https://github.com/Developer-Krishnapc/flutter_multiImage_Camera_plugin/assets/133375124/9e71b5ff-ea09-489c-8114-2594ac813dbc" widhth=200 height=400>
 </td>
-
+<td>
+  =>
+</td>
+<td>
+<img src="https://github.com/Developer-Krishnapc/flutter_multiImage_Camera_plugin/assets/133375124/1e281483-48ad-4e25-baf0-50ee3b46cc1e" widhth=200 height=400>
+</td>
 </tr>
-
 </table>
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+Finally all the paths are returned from the captured images which can be used to send to the server via API.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
