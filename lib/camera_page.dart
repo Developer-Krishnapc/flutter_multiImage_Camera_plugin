@@ -6,7 +6,44 @@ import 'package:flutter/material.dart';
 
 class CameraPage extends StatefulWidget {
   final List<CameraDescription>? cameras;
-  const CameraPage({super.key, required this.cameras});
+
+  // Height<=70
+  final Widget? shutterWidget;
+
+  final Color? bottomStripColor;
+
+  // Height <= 70, width<=60
+  final Widget? completedWidget;
+
+  // Height <= 40, width<=40
+  final Widget? noImageWidget;
+
+  final Color? imageCountBgColor;
+
+  final TextStyle? imageCountTextStyle;
+
+  final Widget? cameraLoadingWidget;
+
+  final Text? previewPageAppBarTextWidget;
+  final Color? previewPageAppBarColor;
+  final Color? previewPageBottomAreaColor;
+  final Widget? selectImageWidget;
+  final Widget? deSelectImageWidget;
+  const CameraPage(
+      {super.key,
+      required this.cameras,
+      this.shutterWidget,
+      this.bottomStripColor,
+      this.completedWidget,
+      this.noImageWidget,
+      this.imageCountBgColor,
+      this.imageCountTextStyle,
+      this.cameraLoadingWidget,
+      this.previewPageAppBarColor,
+      this.previewPageAppBarTextWidget,
+      this.previewPageBottomAreaColor,
+      this.selectImageWidget,
+      this.deSelectImageWidget});
 
   @override
   State<CameraPage> createState() => _CameraPageState();
@@ -17,11 +54,9 @@ class _CameraPageState extends State<CameraPage> {
   List<String> selectedImagePathList = [];
 
   Future initCamera(CameraDescription cameraDescription) async {
-// create a CameraController
     _cameraController =
         CameraController(cameraDescription, ResolutionPreset.ultraHigh);
 
-// Next, initialize the controller. This returns a Future.
     try {
       await _cameraController.initialize().then((_) {
         if (!mounted) return;
@@ -41,7 +76,6 @@ class _CameraPageState extends State<CameraPage> {
 
   @override
   void dispose() {
-    // Dispose of the controller when the widget is disposed.
     _cameraController.dispose();
     super.dispose();
   }
@@ -63,6 +97,13 @@ class _CameraPageState extends State<CameraPage> {
           MaterialPageRoute(
               builder: (context) => PreviewPage(
                     filePath: picture.path,
+                    deSelectImageWidget: widget.deSelectImageWidget,
+                    previewPageAppBarColor: widget.previewPageAppBarColor,
+                    previewPageAppBarTextWidget:
+                        widget.previewPageAppBarTextWidget,
+                    previewPageBottomAreaColor:
+                        widget.previewPageBottomAreaColor,
+                    selectImageWidget: widget.selectImageWidget,
                   )));
 
       if (data != null && data.isNotEmpty) {
@@ -92,7 +133,7 @@ class _CameraPageState extends State<CameraPage> {
                         child: Container(
                           height: 70,
                           width: MediaQuery.of(context).size.width,
-                          color: Colors.black,
+                          color: widget.bottomStripColor ?? Colors.black,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -100,11 +141,12 @@ class _CameraPageState extends State<CameraPage> {
                                 onTap: () async {
                                   await takePicture();
                                 },
-                                child: const Icon(
-                                  Icons.circle,
-                                  size: 65,
-                                  color: Colors.grey,
-                                ),
+                                child: widget.shutterWidget ??
+                                    const Icon(
+                                      Icons.circle,
+                                      size: 65,
+                                      color: Colors.grey,
+                                    ),
                               ),
                             ],
                           ),
@@ -133,19 +175,26 @@ class _CameraPageState extends State<CameraPage> {
                                         bottom: 0,
                                         right: 0,
                                         child: CircleAvatar(
-                                          backgroundColor: Colors.red,
+                                          backgroundColor:
+                                              widget.imageCountBgColor ??
+                                                  Colors.red,
                                           radius: 10,
                                           child: Text(
                                             selectedImagePathList.length
                                                 .toString(),
-                                            style: const TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 10),
+                                            style: widget.imageCountTextStyle ??
+                                                const TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 10),
                                           ),
                                         ))
                                   ],
                                 )
-                              : const SizedBox()),
+                              : SizedBox(
+                                  width: 40,
+                                  height: 40,
+                                  child: widget.noImageWidget,
+                                )),
                       Positioned(
                           bottom: 0,
                           right: 0,
@@ -156,24 +205,26 @@ class _CameraPageState extends State<CameraPage> {
                                 Navigator.pop(
                                     context, [...selectedImagePathList]);
                               },
-                              child: const SizedBox(
+                              child: SizedBox(
                                 height: 70,
                                 width: 60,
                                 child: Center(
-                                  child: Text(
-                                    'Done',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold),
-                                  ),
+                                  child: widget.completedWidget ??
+                                      const Text(
+                                        'Done',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold),
+                                      ),
                                 ),
                               ),
                             ),
                           ))
                     ],
                   )
-                : const Center(child: CircularProgressIndicator())));
+                : widget.cameraLoadingWidget ??
+                    const Center(child: CircularProgressIndicator())));
   }
 }
